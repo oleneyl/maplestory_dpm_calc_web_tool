@@ -1,0 +1,6 @@
+{
+    "dpm_update_date" : "2020-07-13",
+    "individual_cache_update_date" : "2020-06-01",
+    "run_type" : "dev",
+    "dpm_module_location" : "YOUR_DPM_MODULE_ABSOLUTE_PATH"
+}
