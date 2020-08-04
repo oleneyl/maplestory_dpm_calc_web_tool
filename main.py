@@ -19,7 +19,7 @@ import dpmModule.util.dpmgenerator as dpmgenerator
 import dpmModule.util.extractMetadata as ex_meta
 import dpmModule.util.dpmgenerator as dpmgen
 
-from flask import Flask, request, session, render_template
+from flask import Flask, request, session, render_template, url_for, redirect
 
 
 server_run_on_dev = (server_configuration["run_type"] == "dev")
@@ -52,7 +52,7 @@ def process2():
         en_job = jsonData["job"]   
         ko_job = maplejobs.jobList[en_job]
         interface = dpmgen.DpmInterface('high_standard')
-        return json.dumps(interface.calculate_job(ko_job, int(ulevel), runtime = 180*1000))
+        return json.dumps(interface.calculate_job(ko_job, int(ulevel), runtime = 480*1000))
 
 @app.route('/4fd5d7a6b035457953addb5ae410001d.png')
 def static_file():
@@ -62,6 +62,9 @@ def static_file():
 def bd():
     return app.send_static_file('bundle.js')
 
+@app.route('/')
+def redirection():
+    return redirect(url_for('root', path='indiv/archmageFb'))
 
 @app.route('/<path:path>')
 def root(path):
