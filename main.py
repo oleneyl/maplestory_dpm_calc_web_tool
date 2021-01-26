@@ -26,7 +26,6 @@ server_run_on_dev = (server_configuration["run_type"] == "dev")
 
 jobMap = maplejobs.jobMap
 jobList = maplejobs.jobList
-weaponList = maplejobs.weaponList
 jobListOrder = maplejobs.jobListOrder
 
 def getJobAndName(size = 6):
@@ -51,7 +50,7 @@ def process2():
         ulevel = jsonData["ulevel"]
         en_job = jsonData["job"]   
         ko_job = maplejobs.jobList[en_job]
-        interface = dpmgen.DpmInterface('high_standard')
+        interface = dpmgen.DpmInterface()
         return json.dumps(interface.calculate_job(ko_job, int(ulevel), runtime = 480*1000))
 
 @app.route('/4fd5d7a6b035457953addb5ae410001d.png')
